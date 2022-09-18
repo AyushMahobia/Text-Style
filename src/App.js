@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import './App.css';
 import Alert from './components/Alert';
 import Theme from './components/Theme';
 import Navbar from "./components/Navbar"
