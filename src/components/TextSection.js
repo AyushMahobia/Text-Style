@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Textedit from './Textedit';
 
 export default function TextSection(props) {
     // handling on-change event in text area
@@ -12,18 +13,18 @@ export default function TextSection(props) {
     const upperCase = () => {
         var newText = text.toUpperCase();
         setText(newText)
-        if (text.length != 0)
+        if (text.length !== 0)
             props.showAlert("Text case changes to upper case letter", "warning")
     }
     const lowerCase = () => {
         var newText = text.toLowerCase();
         setText(newText)
-        if (text.length != 0)
+        if (text.length !== 0)
             props.showAlert("Text case changes to lower case letter", "warning")
     }
     const copyText = () => {
         navigator.clipboard.writeText(text);
-        if (text.length != 0)
+        if (text.length !== 0)
             props.showAlert("Text copied Succesfully", "success")
     }
     const clearCase = () => {
@@ -34,7 +35,7 @@ export default function TextSection(props) {
         var str = text;
         str = str.replace(/ +(?= )/g, '');
         setText(str)
-        if (text.length != 0)
+        if (text.length !== 0)
             props.showAlert("Removed extra spaces", "primary")
     }
     const binaryCase = () => {
@@ -44,7 +45,7 @@ export default function TextSection(props) {
             return char.charCodeAt(0).toString(2);
         }).join(' ')
         setText(res)
-        if (text.length != 0)
+        if (text.length !== 0)
             props.showAlert("Converted to Binary", "secondary")
     }
     // using hook ie. useState
@@ -53,6 +54,7 @@ export default function TextSection(props) {
     return (
         <>
             <div className={`container text-${props.mode === "light" ? "dark" : "light"}`}>
+            <Textedit mode={props.mode}/>
                 <div className="mb-3">
                     <h2>Write some text</h2>
                     <textarea className="form-control" style={{
@@ -77,6 +79,8 @@ export default function TextSection(props) {
                 <h2>Preview</h2>
                 <p>{text.length > 0 ? text : "Enter Some Text"}</p>
             </div>
+            
+            
         </>
     )
 }

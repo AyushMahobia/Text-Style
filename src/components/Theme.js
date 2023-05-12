@@ -14,7 +14,7 @@ export default function Theme() {
     )
     const [btnText, setBtnText] = useState("Dark Mode");
     const changeTheme = () => {
-        if (myStyle.color == "black") {
+        if (myStyle.color === "black") {
             setStyle ({
                 color: "white",
                 backgroundColor: "#101010"
